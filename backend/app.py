@@ -10,8 +10,14 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+# entry point
+@app.route('/')
+def home():
+    return "App Working"
+
 # Load your trained model
 model = load_model('captcha_model.h5', compile=False)
+
 
 def output_to_solution(prediction):
     prediction = np.round(prediction).astype(int)
